@@ -3,6 +3,10 @@ from fastapi import FastAPI, Request,HTTPException
 app = FastAPI()
 import aiofiles
 
+@app.get("/")
+def read_root():
+    return {"Hello": "World"}
+
 # Upload file
 @app.post("/upload/face-reco")
 async def faceRecognSimulator(request: Request):
