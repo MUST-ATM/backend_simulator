@@ -24,14 +24,10 @@ async def faceRecognSimulator(request: Request):
 async def faceAntiSimulator(request: Request):
     try:
         # Extract the filename from the request headers.(none extra protect)
-        filename = request.headers['filename']
-        async with aiofiles.open(filename, 'wb') as f:
+        async with aiofiles.open("233.jpg", 'wb') as f:
             async for chunk in request.stream():
                 await f.write(chunk)
-        if(filename == "capture.jpg"):
             return HTTPException(status_code=200, detail="Success")
-        else:
-            raise HTTPException(status_code=411, detail="Error FaceAntiSpoofing")
     except Exception:
         raise HTTPException(status_code=408, detail="Error uploading")
 
