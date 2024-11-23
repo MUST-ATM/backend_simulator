@@ -12,11 +12,11 @@ def read_root():
 async def faceRecognSimulator(request: Request):
     try:
         # Extract the filename from the request headers.(none extra protect)
-        filename = request.headers['filename']
+        filename = "233.jpg"
         async with aiofiles.open(filename, 'wb') as f:
             async for chunk in request.stream():
                 await f.write(chunk)
-        return {"username": filename}
+        return {"username": "233"}
     except Exception:
         raise HTTPException(status_code=408, detail="Error uploading")
 
